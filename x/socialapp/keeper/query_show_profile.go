@@ -2,11 +2,12 @@ package keeper
 
 import (
 	"context"
+	"socialapp/x/socialapp/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"socialapp/x/socialapp/types"
 )
 
 func (k Keeper) ShowProfile(goCtx context.Context, req *types.QueryShowProfileRequest) (*types.QueryShowProfileResponse, error) {
@@ -15,9 +16,10 @@ func (k Keeper) ShowProfile(goCtx context.Context, req *types.QueryShowProfileRe
 	}
 
 	ctx := sdk.UnwrapSDKContext(goCtx)
+	profile, found := k.GetProfile(ctx, req.Id)
+	if !found {
+		return nil, sdkerrors.ErrKeyNotFound
+	}
 
-	// TODO: Process the query
-	_ = ctx
-
-	return &types.QueryShowProfileResponse{}, nil
+	return &types.QueryShowProfileResponse{Profile: profile}, nil
 }

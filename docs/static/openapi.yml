@@ -43875,17 +43875,19 @@ paths:
             type: object
             properties:
               post:
-                type: object
-                properties:
-                  title:
-                    type: string
-                  body:
-                    type: string
-                  owner:
-                    type: string
-                  id:
-                    type: string
-                    format: uint64
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    body:
+                      type: string
+                    owner:
+                      type: string
+                    id:
+                      type: string
+                      format: uint64
               pagination:
                 type: object
                 properties:
@@ -44006,12 +44008,14 @@ paths:
             type: object
             properties:
               profile:
-                type: object
-                properties:
-                  handlename:
-                    type: string
-                  id:
-                    type: string
+                type: array
+                items:
+                  type: object
+                  properties:
+                    handlename:
+                      type: string
+                    id:
+                      type: string
               pagination:
                 type: object
                 properties:
@@ -71827,17 +71831,19 @@ definitions:
     type: object
     properties:
       post:
-        type: object
-        properties:
-          title:
-            type: string
-          body:
-            type: string
-          owner:
-            type: string
-          id:
-            type: string
-            format: uint64
+        type: array
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+            body:
+              type: string
+            owner:
+              type: string
+            id:
+              type: string
+              format: uint64
       pagination:
         type: object
         properties:
@@ -71868,12 +71874,14 @@ definitions:
     type: object
     properties:
       profile:
-        type: object
-        properties:
-          handlename:
-            type: string
-          id:
-            type: string
+        type: array
+        items:
+          type: object
+          properties:
+            handlename:
+              type: string
+            id:
+              type: string
       pagination:
         type: object
         properties:

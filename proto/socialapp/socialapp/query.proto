@@ -59,7 +59,7 @@ message QueryShowProfileRequest {
 }
 
 message QueryShowProfileResponse {
-  Profile profile = 1;
+  Profile profile = 1 [(gogoproto.nullable) = false];
 }
 
 message QueryListProfileRequest {
@@ -67,7 +67,7 @@ message QueryListProfileRequest {
 }
 
 message QueryListProfileResponse {
-  Profile                                profile    = 1;
+  repeated Profile profile = 1 [(gogoproto.nullable) = false];
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
@@ -77,16 +77,16 @@ message QueryShowPostRequest {
 }
 
 message QueryShowPostResponse {
-  Post post = 1;
+  Post post = 1 [(gogoproto.nullable) = false];
 }
 
 message QueryListPostRequest {
-  string                                profileId  = 1;
+  string profileId  = 1;
   cosmos.base.query.v1beta1.PageRequest pagination = 2;
 }
 
 message QueryListPostResponse {
-  Post                                   post       = 1;
+  repeated Post post = 1 [(gogoproto.nullable) = false];
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
