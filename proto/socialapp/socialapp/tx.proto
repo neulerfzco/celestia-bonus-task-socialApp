@@ -9,6 +9,8 @@ service Msg {
   rpc CreateProfile (MsgCreateProfile) returns (MsgCreateProfileResponse);
   rpc UpdateProfile (MsgUpdateProfile) returns (MsgUpdateProfileResponse);
   rpc DeleteProfile (MsgDeleteProfile) returns (MsgDeleteProfileResponse);
+  rpc CreatePost    (MsgCreatePost   ) returns (MsgCreatePostResponse   );
+  rpc DeletePost    (MsgDeletePost   ) returns (MsgDeletePostResponse   );
 }
 message MsgCreateProfile {
   string creator    = 1;
@@ -35,4 +37,21 @@ message MsgDeleteProfile {
 }
 
 message MsgDeleteProfileResponse {}
+
+message MsgCreatePost {
+  string creator = 1;
+  string title   = 2;
+  string body    = 3;
+}
+
+message MsgCreatePostResponse {
+  uint64 id = 1;
+}
+
+message MsgDeletePost {
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeletePostResponse {}
 
