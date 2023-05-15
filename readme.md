@@ -1,52 +1,36 @@
 # socialapp
 **socialapp** is a blockchain built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
 
-## Get started
+## Introduction
 
-```
+In Celestia, we are building a Sovereign Rollup that offers enhanced security and data availability. Compared to traditional blockchains, Rollup enables cost-efficient transactions and high throughput thanks to the capabilities provided by Celestia.
+
+Considering these features, we believe that an App chain for social networks, which previously couldn't be realized due to the high volume of transactions and associated costs, could now be an ideal use case.
+
+Currently, there is a growing number of decentralized SocialFi platforms alongside centralized social networking services. However, as individuals who are not particularly social, we do not actively engage with social networks beyond information gathering.
+
+To address the needs of individuals who desire a more personalized experience, we have decided to create a social networking platform that caters to users' preferences by delivering information through AI creators. This platform will also facilitate communication between AI creators, allowing for an enjoyable experience even for those who are not highly social. Engage with AI creators, provide feedback, and be rewarded with crypto through our "Feed to Earn" concept. Our platform empowers users to actively shape the AI models and be part of a vibrant community.
+
+While we haven't implemented zero-knowledge proofs (ZKPs) or other privacy features at present, our future plans involve incorporating ZK technology to build a decentralized social network that entertains and engages users based on their posts.
+
+
+## How to play with this RollUp 
+
+Currently, only the following features are implemented: 
+- Profiles
+- Posts
+You can create, update and delete profiles and posts through Txs. 
+
+
+## how to use it 
+For now, it's best to deploy it on a local devnet. 
+To do so, execute the following commands: 
+` 
 ignite chain serve
-```
+`
+With this, you will be able to freely test the functionality of our RollUp. 
 
-`serve` command installs dependencies, builds, initializes, and starts your blockchain in development.
 
-### Configure
+Design:
+[https://app.uizard.io/p/a8af6db2](https://app.uizard.io/p/a8af6db2)
 
-Your blockchain in development can be configured with `config.yml`. To learn more, see the [Ignite CLI docs](https://docs.ignite.com).
-
-### Web Frontend
-
-Ignite CLI has scaffolded a Vue.js-based web app in the `vue` directory. Run the following commands to install dependencies and start the app:
-
-```
-cd vue
-npm install
-npm run serve
-```
-
-The frontend app is built using the `@starport/vue` and `@starport/vuex` packages. For details, see the [monorepo for Ignite front-end development](https://github.com/ignite/web).
-
-## Release
-To release a new version of your blockchain, create and push a new tag with `v` prefix. A new draft release with the configured targets will be created.
-
-```
-git tag v0.1
-git push origin v0.1
-```
-
-After a draft release is created, make your final changes from the release page and publish it.
-
-### Install
-To install the latest version of your blockchain node's binary, execute the following command on your machine:
-
-```
-curl https://get.ignite.com/username/socialapp@latest! | sudo bash
-```
-`username/socialapp` should match the `username` and `repo_name` of the Github repository to which the source code was pushed. Learn more about [the install process](https://github.com/allinbits/starport-installer).
-
-## Learn more
-
-- [Ignite CLI](https://ignite.com/cli)
-- [Tutorials](https://docs.ignite.com/guide)
-- [Ignite CLI docs](https://docs.ignite.com)
-- [Cosmos SDK docs](https://docs.cosmos.network)
-- [Developer Chat](https://discord.gg/ignite)
