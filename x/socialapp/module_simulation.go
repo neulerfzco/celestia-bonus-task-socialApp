@@ -24,7 +24,19 @@ var (
 )
 
 const (
-// this line is used by starport scaffolding # simapp/module/const
+	opWeightMsgCreateProfile = "op_weight_msg_create_profile"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgCreateProfile int = 100
+
+	opWeightMsgUpdateProfile = "op_weight_msg_update_profile"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdateProfile int = 100
+
+	opWeightMsgDeleteProfile = "op_weight_msg_delete_profile"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteProfile int = 100
+
+	// this line is used by starport scaffolding # simapp/module/const
 )
 
 // GenerateGenesisState creates a randomized GenState of the module
@@ -57,6 +69,39 @@ func (am AppModule) RegisterStoreDecoder(_ sdk.StoreDecoderRegistry) {}
 // WeightedOperations returns the all the gov module operations with their respective weights.
 func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
 	operations := make([]simtypes.WeightedOperation, 0)
+
+	var weightMsgCreateProfile int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgCreateProfile, &weightMsgCreateProfile, nil,
+		func(_ *rand.Rand) {
+			weightMsgCreateProfile = defaultWeightMsgCreateProfile
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgCreateProfile,
+		socialappsimulation.SimulateMsgCreateProfile(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgUpdateProfile int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgUpdateProfile, &weightMsgUpdateProfile, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdateProfile = defaultWeightMsgUpdateProfile
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdateProfile,
+		socialappsimulation.SimulateMsgUpdateProfile(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteProfile int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeleteProfile, &weightMsgDeleteProfile, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteProfile = defaultWeightMsgDeleteProfile
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteProfile,
+		socialappsimulation.SimulateMsgDeleteProfile(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
 
 	// this line is used by starport scaffolding # simapp/module/operation
 

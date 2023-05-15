@@ -1,7 +1,38 @@
 syntax = "proto3";
+
 package socialapp.socialapp;
 
 option go_package = "socialapp/x/socialapp/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc CreateProfile (MsgCreateProfile) returns (MsgCreateProfileResponse);
+  rpc UpdateProfile (MsgUpdateProfile) returns (MsgUpdateProfileResponse);
+  rpc DeleteProfile (MsgDeleteProfile) returns (MsgDeleteProfileResponse);
+}
+message MsgCreateProfile {
+  string creator    = 1;
+  string handlename = 2;
+}
+
+message MsgCreateProfileResponse {
+  string id = 1;
+}
+
+message MsgUpdateProfile {
+  string creator    = 1;
+  string handlename = 2;
+  string id         = 3;
+}
+
+message MsgUpdateProfileResponse {
+  string handlename = 1;
+}
+
+message MsgDeleteProfile {
+  string creator = 1;
+  string id      = 2;
+}
+
+message MsgDeleteProfileResponse {}
+
