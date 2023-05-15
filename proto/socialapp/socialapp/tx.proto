@@ -1,0 +1,7 @@
+syntax = "proto3";
+package socialapp.socialapp;
+
+option go_package = "socialapp/x/socialapp/types";
+
+// Msg defines the Msg service.
+service Msg {}

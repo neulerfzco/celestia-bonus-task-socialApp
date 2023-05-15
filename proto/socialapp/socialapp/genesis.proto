@@ -1,0 +1,12 @@
+syntax = "proto3";
+package socialapp.socialapp;
+
+import "gogoproto/gogo.proto";
+import "socialapp/socialapp/params.proto";
+
+option go_package = "socialapp/x/socialapp/types";
+
+// GenesisState defines the socialapp module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
